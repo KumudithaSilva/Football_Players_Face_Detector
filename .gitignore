@@ -1,0 +1,10 @@
+# Ignore the Dataset
+FootballPlayerImageClassifier/model/dataset
+FootballPlayerImageClassifier/model/test_images
+
+# Ignore specific files or patterns within the 'model' directory
+FootballPlayerImageClassifier/model/opencv
+
+# Ignore any IDE-specific files or directories
+.vscode/
+.idea/
