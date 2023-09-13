@@ -5,6 +5,9 @@ FootballPlayerImageClassifier/model/test_images
 # Ignore specific files or patterns within the 'model' directory
 FootballPlayerImageClassifier/model/opencv
 FootballPlayerImageClassifier/model/cropped.rar
+
+FootballPlayerImageClassifier/server/test_images
+
 .ipynb_checkpoints/
 
 # Ignore any IDE-specific files or directories
