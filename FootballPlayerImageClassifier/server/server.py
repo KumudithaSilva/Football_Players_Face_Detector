@@ -8,7 +8,7 @@ def classify_images():
     images = request.form['images']
 
     response = jsonify(util.classify_image(images))
-    response.headers.add('Access-Control-Allow-Origin', "*")
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
     
 
