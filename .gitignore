@@ -12,5 +12,6 @@ FootballPlayerImageClassifier/server/test_images
 .ipynb_checkpoints/
 
 # Ignore any IDE-specific files or directories
+__pycache__/
 .vscode/
 .idea/
