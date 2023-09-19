@@ -21,7 +21,8 @@ dz.on("complete", function(file){
     // Extract the data URL
     let converted_image = file.dataURL
 
-    var url = "http://127.0.0.1:5000/classify_image";
+    //var url = "http://127.0.0.1:5000/classify_image";
+    var url = "/api/classify_image";
 
     $.post(url, {
         // Converted_image contains based64 string
