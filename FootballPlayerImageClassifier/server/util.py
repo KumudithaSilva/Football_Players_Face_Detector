@@ -9,11 +9,13 @@ import pickle
 from wavelet import w2d
 
 # Get the absolute path of the server directory
-artifacts_directory = os.path.dirname(os.path.abspath(__file__))
+server_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the absolute path to files
-class_file_path = os.path.join(artifacts_directory, "artifacts", "class_dictionary.json")
-model_file_path = os.path.join(artifacts_directory, "artifacts", "best_model.pkl")
+class_file_path = os.path.join(server_directory, "artifacts", "class_dictionary.json")
+model_file_path = os.path.join(server_directory, "artifacts", "best_model.pkl")
+haarcascade_frontalface_file_path = os.path.join(server_directory, "opencv", "haarcascade_frontalface_default.xml")
+haarcascade_file_path = os.path.join(server_directory, "opencv", "haarcascade_eye.xml")
 
 # Variables to hold loaded data
 __class_name_number = None
@@ -52,8 +54,8 @@ def get_cv2_image_from_based64_string(b64str):
 
 # Get the cropped image
 def get_cropped_image(image_path, image_based64):
-    face_cascade = cv2.CascadeClassifier('FootballPlayerImageClassifier/server/opencv/haarcascade_frontalface_default.xml')
-    eye_cascade = cv2.CascadeClassifier('FootballPlayerImageClassifier/server/opencv/haarcascade_eye.xml')
+    face_cascade = cv2.CascadeClassifier(haarcascade_frontalface_file_path)
+    eye_cascade = cv2.CascadeClassifier(haarcascade_file_path)
 
     if image_path:
         img = cv2.imread(image_path)
