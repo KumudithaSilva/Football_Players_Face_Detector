@@ -1,0 +1,90 @@
+1. Upload the FootballPlayerImageClassifier folder to cloud ubuntu server
+-------------------------------------------------------------------------------------
+# Install WinSCP to local directory
+WinSCP allows to securely transfer files between a local and a remote computers.
+
+
+2. Install NGINX on ubuntu server
+--------------------------------------------------------------------------------------
+# Install all packages locally in the EC2
+sudo apt-get update
+
+# Install the NGINX webserver
+sudo apt-get install nginx
+
+# Status of the NGINX webserver
+sudo service nginx status
+
+
+3. Replace the default NGINX home page files
+--------------------------------------------------------------------------------------
+# Access the nginx configuration files
+cd /etc/nginx
+
+# Access the nginx sites-enabled directory
+less sites-enabled/default
+
+# Disable the default configuration
+sudo unlink default
+
+
+4. Create Football Players Image Classification configuration file on sites-availabed
+---------------------------------------------------------------------------------------
+# Create the configuration file
+sudo vim sport.conf
+
+# Football Players Image Classification configuration file
+server {
+    listen 80;
+    server_name ec2-54-145-34-206.compute-1.amazonaws.com;
+    root /home/ubuntu/FootballPlayerImageClassifier/client;
+    index app.html;
+
+    location /api/ {
+        rewrite ^/api(/.*)$ $1 break;
+        proxy_pass http://127.0.0.1:5000;
+    }
+}
+
+# Create sim link to sites-enabled
+sudo ln -v -s /etc/nginx/sites-available/sport.conf /etc/nginx/sites-enabled/
+
+
+5. Restart NGINX server
+---------------------------------------------------------------------------------------
+
+# Restart the server
+sudo server nginx restart
+
+
+6. Install necessary libraries
+---------------------------------------------------------------------------------------
+
+# Install pip for Python 3 
+sudo apt install python3-pip
+
+# Install Flask server
+pip3 install Flask  
+
+# Install Numpy
+pip3 install numpy
+
+# Install Sickit-Learn
+pip3 install scikit-learn
+
+
+7. Granted the access
+---------------------------------------------------------------------------------------
+
+# Recursively change the permissions
+sudo chmod -R 755 /home/ubuntu/FootballPlayerImageClassifier/client
+
+# Recursively change the owner and group
+sudo chown -R www-data:www-data /home/ubuntu/FootballPlayerImageClassifier/client
+
+
+8. Run the server files on background
+----------------------------------------------------------------------------------------
+
+# Run the server files
+nohup /usr/bin/python3 /home/ubuntu/FootballPlayerImageClassifier/server/server.py > /dev/null 2>&1 &
