@@ -3,7 +3,7 @@ Welcome to the Football Player Image Classification project! This project embark
 <br><br>
 
 
-![Sport_2](https://github.com/KumudithaSilva/Football_Players_Face_Detector/assets/131386682/74ca58cf-5448-4940-8aac-78280f20165d)
+![Sport_4](https://github.com/KumudithaSilva/Football_Players_Face_Detector/assets/131386682/2c2a497c-041a-465d-a341-e4922afe17e6)
 
 ## Project Overview 📊
 The primary objective of this project revolves around the construction of a classification model for football players to achieve accurate player predictions. To accomplish this task, various techniques were employed, including the curvelet transform and wavelet transform on images to extract features from cropped images, followed by vertical stacking. Additionally, a user-centric website will be created, and cloud platforms will empower users to access and utilize the developed model.
