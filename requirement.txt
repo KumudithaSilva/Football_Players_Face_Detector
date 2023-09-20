@@ -72,6 +72,15 @@ pip3 install numpy
 # Install Sickit-Learn
 pip3 install scikit-learn
 
+# Install PyWavelets
+pip install pywavelets
+
+# Install OpenCV
+pip install opencv-python
+
+# Install Joblib
+pip install joblib
+
 
 7. Granted the access
 ---------------------------------------------------------------------------------------
@@ -83,7 +92,37 @@ sudo chmod -R 755 /home/ubuntu/FootballPlayerImageClassifier/client
 sudo chown -R www-data:www-data /home/ubuntu/FootballPlayerImageClassifier/client
 
 
-8. Run the server files on background
+8. Create the systemd service
+---------------------------------------------------------------------------------------
+
+# Create a systemd service Unit File
+sudo nano /etc/systemd/system/football_player_classifier.service
+
+# Add the content
+[Unit]
+Description=Football Player Image Classifier Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/FootballPlayerImageClassifier/server/server.py
+WorkingDirectory=/home/ubuntu/FootballPlayerImageClassifier/server/
+Restart=always
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+
+# Enable the Service to run when system boots
+sudo systemctl enable football_player_classifier.service
+
+# Start the service
+sudo systemctl start football_player_classifier.service
+
+# Status of the service
+sudo systemctl status football_player_classifier.service
+
+
+9. Run the server files on background
 ----------------------------------------------------------------------------------------
 
 # Run the server files
